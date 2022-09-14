@@ -1,4 +1,12 @@
-// Copyright 2021.12.28 <Shuyang>
+/*
+ * 
+ * Copyright (c) [2022] <Shuyang ZHANG>, All Rights Reserved. 
+ * @Author: Shuyang ZHANG
+ * @Date: 2022-09-14 23:34:45
+ * @LastEditors: Shuyang ZHANG
+ * @LastEditTime: 2022-09-14 23:37:44
+ * @Description: 
+ */
 #pragma once
 
 #include <iostream>

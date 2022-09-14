@@ -1,4 +1,12 @@
-// Copyright 2021.12.28 <Shuyang>
+/*
+ * 
+ * Copyright (c) [2022] <Shuyang ZHANG>, All Rights Reserved. 
+ * @Author: Shuyang ZHANG
+ * @Date: 2022-09-14 23:34:45
+ * @LastEditors: Shuyang ZHANG
+ * @LastEditTime: 2022-09-14 23:38:46
+ * @Description: 
+ */
 #include "include/common/enum_transformer.h"
 
 namespace cttl {

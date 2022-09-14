@@ -1,5 +1,13 @@
-// Copyright 2021.12.28 <Shuyang>
-#include "src/hsmm/hsmm_parameter.h"
+/*
+ * 
+ * Copyright (c) [2022] <Shuyang ZHANG>, All Rights Reserved. 
+ * @Author: Shuyang ZHANG
+ * @Date: 2022-09-14 23:34:45
+ * @LastEditors: Shuyang ZHANG
+ * @LastEditTime: 2022-09-14 23:39:31
+ * @Description: 
+ */
+#include "include/hsmm/hsmm_parameter.h"
 
 namespace cttl {
 namespace hsmm {
