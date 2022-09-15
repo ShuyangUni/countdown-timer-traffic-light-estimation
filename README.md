@@ -17,7 +17,7 @@ This code is in the folder countdown_timer_estimator.
 
 2. Prerequisites
     * Eigen3, for matrix calculation
-    * Protobuf3, for parameter system
+    * Protobuf3, for parameter file loading
     * OpenMP, for CPU parallel acceleration (optimal)
 
 3. Setup
@@ -54,6 +54,93 @@ This code is in the folder countdown_timer_estimator.
     ./apps/demo_single_sequence ../config/hsmm_parameter_proto.config ../../udi_cttl_dataset/0_offset/01
     ```
 * Running Example
+    * The running results are displayed in real time on the terminal.
+    * Before runing the sequence, parameter loading information is given.
+    ```
+    load hsmm parameter from Protobuf...
+    proto file filepath: ../config/hsmm_parameter_proto.config
+    --------------------------------------------------
+    Basic Parameters:
+        hz_:10
+        interval_:0.1
+        res_:0.01
+        d_:1
+        sigma_:0.1
+        max_n_:5
+        n_state_:300
+        n_obs_:484
+        n_d_sample_:13
+        alpha_:4
+    --------------------------------------------------
+    ```
+    * When the system is running, the input/output results are given.
+    ```
+    [Info]: main(): processing...../../udi_cttl_dataset/0_offset/01
+    % seq, timing, ground truth, input from classifiers, estimation output.
+    % The ground truth/input format: <color, tens place, units place>
+    % The output format: <color, tens place, units place>, Duration sampling ID
+    % null detection is marked as [].
+    seq:  22391, comsumption:  0.028ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 1
+    seq:  22392, comsumption: 51.580ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 2
+    seq:  22393, comsumption: 35.075ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 3
+    seq:  22394, comsumption: 38.399ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 4
+    seq:  22395, comsumption: 36.425ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 5
+    seq:  22396, comsumption: 38.370ms, gt: <    red,  2,  0 >, obz: <    red,  2,  0 >, result: <    red,  2,  0 >, 1
+    seq:  22397, comsumption: 36.237ms, gt: <    red,  2,  0 >, obz: <    red,  2,  0 >, result: <    red,  2,  0 >, 2
+    seq:  22398, comsumption: 38.524ms, gt: <    red,  2,  0 >, obz: <    red,  2,  0 >, result: <    red,  2,  0 >, 3
+    seq:  22399, comsumption: 37.595ms, gt: <    red,  2,  0 >, obz: <    red,  2,  0 >, result: <    red,  2,  0 >, 4
+    seq:  22400, comsumption: 35.898ms, gt: <    red,  2,  0 >, obz: <    red,  2,  0 >, result: <    red,  2,  0 >, 5
+    ...
+    ```
+    * When finishing a sequence, statistical results are given.
+    ```
+        Total number: 412
+    Classification:
+        color: 412/1.000, value: 394/0.956, total: 394/0.956.
+        color: 50/1.000, value: 50/1.000, total: 50/1.000.
+    Estimation:
+        color: 412/1.000, value: 392/0.951, total: 392/0.951.
+        color: 50/1.000, value: 50/1.000, total: 50/1.000.
+    Color observation number per class:
+    201 211   0
+    Confusion matrix color observation:
+    201   0   0
+    0 211   0
+    0   0   0
+    Digit observation number per class:
+    165 239 131  39  39  39  47  47  39  39
+    Confusion matrix digit observation:
+    164   0   0   0   0   0   1   0   0   0
+    0 238   1   0   0   0   0   0   0   0
+    0   0 131   0   0   0   0   0   0   0
+    0   0   0  39   0   0   0   0   0   0
+    0   0   0   0  39   0   0   0   0   0
+    0   0   0   0   0  39   0   0   0   0
+    0   0   0   0   0   0  47   0   0   0
+    0   0   0   0   0   0  16  31   0   0
+    0   0   0   0   0   0   0   0  39   0
+    0   0   0   0   0   0   0   0   0  39
+    Color estimation number per class:
+    201 211   0
+    Confusion matrix color estimation:
+    201   0   0
+    0 211   0
+    0   0   0
+    Digit estimation number per class:
+    165 239 131  39  39  39  47  47  39  39
+    Confusion matrix digit estimation:
+    165   0   0   0   0   0   0   0   0   0
+    0 239   0   0   0   0   0   0   0   0
+    0   0 131   0   0   0   0   0   0   0
+    0   0   0  39   0   0   0   0   0   0
+    0   0   0   0  39   0   0   0   0   0
+    0   0   0   0   0  39   0   0   0   0
+    0   0   0   0   0   2  45   0   0   0
+    0   0   0   0   0   0  11  29   7   0
+    0   0   0   0   0   0   0   0  39   0
+    0   0   0   0   0   0   0   0   0  39
+    --------------------------------------------------
+    ```
 
 ## Digit Classifier (Python)
 
