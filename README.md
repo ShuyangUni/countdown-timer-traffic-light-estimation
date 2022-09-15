@@ -174,6 +174,10 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
 ## Digit Classifier (Python)
 The digit classifier is one of the preceding modules of our state estimator. Its input is the detection region of countdown timers, and it output the digit classes on both tens and units places.
 This code is in the folder [digit_classifer](./digit_classifier/).
+The network structure is given in [model.py](./digit_classifier/model.py).
+The parameter file of the pre-trained network is [model.pkl](./digit_classifier/model.pkl). 
+The training and validation of the network use [training.py](./digit_classifier/training.py),
+and the dataset can be made by [dataset.py](./digit_classifier/dataset.py).
 
 1. Environments
     * The code is tested cross different systems, including 
@@ -201,6 +205,13 @@ This code is in the folder [digit_classifer](./digit_classifier/).
     * opencv
     ```
     pip3 install opencv-python
+    ```
+3. Run the code
+    ```
+    cd digit_classifier
+    
+    % before running this, change the input and output folder in testing.py. 
+    python3 testing.py
     ```
 
 ## License
