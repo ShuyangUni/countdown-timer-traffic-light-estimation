@@ -3,10 +3,12 @@
 * Frequency: 10Hz
 * 3 magitude of random pixel shifting
   * detection simulation
-  * 0,3,5 pixels
+  * 0, 3, 5 pixels
 * Decives
   * Sensing SG2-AR0231C-0202
-    * 30$^{\circ}$- 11.9mm
+    * Horizontal FOV: $30 ^{\circ}$
+    * Vertical FOV: $16 ^{\circ}$
+    * Effective Focus Length: $11.9mm$
   * smartphones
 
 ## Sequences

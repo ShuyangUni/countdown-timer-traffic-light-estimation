@@ -4,8 +4,7 @@ This paper has been submitted to IEEE Transactions on Intelligent Transportation
 This work aims to estimate the color and digit of traffic lights with countdown timers, using a Variable Transition Hidden Markov Model (VT-HMM) with a dynamic state transtion matrix design.
 
 ## Dataset
-Our toy dataset is in the folder [udi_cttl_dataset](./udi_cttl_dataset/).
-The image sequences are collected with the help from [Unity-Drive Innovation Technology Co., Ltd.](https://www.unity-drive.com) (UDI).
+Our toy dataset is collected under the help from [Unity-Drive Innovation Technology Co., Ltd.](https://www.unity-drive.com) (UDI).
 Since the scenarios involve customers' information, 
 we cannot provide the raw images for the detection tasks.
 We crop the images according to the detection boxes 
@@ -24,6 +23,16 @@ and data collection quality:
 * The hard part contains Sequence $02$, $03$, $04$, and $07$, and is challenging for the classification task. The countdown timer regions are small since the ego-vehicle is far from the traffic lights. Some pictures are blurred because of lighting or the ego vehicle's motion.
 
 We also simulate the errors of the input bounding boxes. We add random pixel offsets on the detection ground truth, with different magnitudes of 0-pixel, 3-pixel and 5-pixel errors, respectively.
+
+The dataset is in the folder [udi_cttl_dataset](./udi_cttl_dataset/). 
+It contains 3 subdirectories, for the input with 0, 3, 5-pixel random offsets.
+Each subdirectory has 10 sequences, 
+and each sequence folder contains the corresponding image patches 
+named by their sequence numbers.
+Each sequence folder also contains:
+* [classification.txt](./udi_cttl_dataset/0_offset/01/classification.txt), the inputs for our state estimator, derived from our classifiers. The format of each line is (sequence number, color observation, tens place observation, units place observation).
+* [gt.txt](./udi_cttl_dataset/0_offset/01/gt.txt), the ground truth of the sequence. The format of each line is (sequence number, color ground truth, number display ground truth).
+* [timestamp.txt](./udi_cttl_dataset/0_offset/01/timestamp.txt), the timestamps of the sequence. The format of each line is (sequence number, timestamp).
 
 ## State Estimator (C++11)
 The state estimator is the core part of this paper. Its input is the color and digit classification sequences from our classifiers. It outputs the optimal estimates of countdown timer traffic light states over time.
