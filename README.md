@@ -4,7 +4,25 @@ This paper has been submitted to IEEE Transactions on Intelligent Transportation
 This work aims to estimate the color and digit of traffic lights with countdown timers, using a Variable Transition Hidden Markov Model (VT-HMM) with a dynamic state transtion matrix design.
 
 ## Dataset
+Our toy dataset is in the folder udi_cttl_dataset.
+The image sequences are collected with the help from [Unity-Drive Innovation Technology Co., Ltd.](https://www.unity-drive.com) (UDI).
+Since the scenarios involve customers' information, 
+we cannot provide the raw images for the detection tasks.
+We crop the images according to the detection boxes 
+and use these regions as the inputs for our classifiers.
 
+We collected a toy dataset with $10$ sequences, a total frame of $1702$ image.
+The first $7$ sequences are collected by 
+a Sensing SG2-AR0231C-0202-GMSL-H30S camera, attached to
+our autonomous vehicle platform. 
+The rest $3$ sequences are captured by a smartphone in Shenzhen, China.
+Both devices works at the capture frequency of $10Hz$.
+The dataset into two levels according to scenario settings 
+and data collection quality:
+* The normal part includes Sequence $01$, $05$, $06$, $08$, $09$, and $10$. The regions of countdown timers are over $40 \times 40$ pixels, and the digits are clear to be recognized.
+* The hard part contains Sequence $02$, $03$, $04$, and $07$, and is challenging for the classification task. The countdown timer regions are small since the ego-vehicle is far from the traffic lights. Some pictures are blurred because of lighting or the ego vehicle's motion.
+
+We also simulate the errors of the input bounding boxes. We add random pixel offsets on the detection ground truth, with different magnitudes of 0-pixel, 3-pixel and 5-pixel errors, respectively.
 
 ## State Estimator (C++11)
 This code is in the folder countdown_timer_estimator.
