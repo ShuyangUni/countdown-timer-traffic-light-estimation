@@ -143,6 +143,35 @@ This code is in the folder countdown_timer_estimator.
     ```
 
 ## Digit Classifier (Python)
+This code is in the folder digit_classifer.
+
+1. Environments
+    * The code is tested cross different systems, including 
+        * Ubuntu 18.04, 64-bit, 16G RAM, Intel Corei5-8600K
+        * Ubuntu 20.04, 64-bit, 16G RAM, AMD Ryzen 5 5600X
+        * macOS Monterey, 64-bit, 16G RAM, Apple M1 Pro
+
+2. Prerequisites
+    * numpy
+    ```
+    pip3 install numpy
+    ```
+    * torch
+    ```
+    pip3 install torch
+    ```
+    * pillow
+    ```
+    pip3 install pillow
+    ```
+    * torchvision
+    ```
+    pip3 install torchvision
+    ```
+    * opencv
+    ```
+    pip3 install opencv-python
+    ```
 
 ## License
 The source code is released under MIT license.
