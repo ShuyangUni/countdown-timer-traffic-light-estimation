@@ -48,8 +48,7 @@ bool HSMMWorker::Process(const common::Data &data, const double &drop_ratio,
       continue;
     }
 
-    std::chrono::_V2::system_clock::time_point t_s =
-        std::chrono::system_clock::now();
+    auto t_s = std::chrono::high_resolution_clock::now();
     cttl::common::Observation obz = data.observations.at(i);
     t_cur = data.timestamps.at(i);
     int obz_c = obz.c;
@@ -83,8 +82,7 @@ bool HSMMWorker::Process(const common::Data &data, const double &drop_ratio,
     results->results.push_back(result);
     t_pre = t_cur;
 
-    std::chrono::_V2::system_clock::time_point t_e =
-        std::chrono::system_clock::now();
+    auto t_e = std::chrono::high_resolution_clock::now();
     std::chrono::microseconds duration =
         std::chrono::duration_cast<std::chrono::microseconds>(t_e - t_s);
     double millseconds = static_cast<double>(duration.count()) / 1000.0;
