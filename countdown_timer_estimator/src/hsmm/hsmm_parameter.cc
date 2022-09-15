@@ -4,7 +4,7 @@
  * @Author: Shuyang ZHANG
  * @Date: 2022-09-14 23:34:45
  * @LastEditors: Shuyang ZHANG
- * @LastEditTime: 2022-09-14 23:39:31
+ * @LastEditTime: 2022-09-15 13:41:11
  * @Description: 
  */
 #include "include/hsmm/hsmm_parameter.h"
@@ -12,8 +12,21 @@
 namespace cttl {
 namespace hsmm {
 
-HSMMParameter::HSMMParameter() {
-  InitBasics();
+HSMMParameter::HSMMParameter() {}
+
+// HSMMParameter::HSMMParameter() {
+//   InitBasicsFromCode();
+//   GenerateBColor();
+//   GenerateBValue();
+//   GenerateAConnections();
+//   flag_valid = true;
+//   if (!LoadDistributions()) {
+//     flag_valid = false;
+//   }
+// }
+
+HSMMParameter::HSMMParameter(const std::string &filepath_proto) {
+  InitBasicsFromProto(filepath_proto);
   GenerateBColor();
   GenerateBValue();
   GenerateAConnections();
@@ -23,20 +36,41 @@ HSMMParameter::HSMMParameter() {
   }
 }
 
-void HSMMParameter::InitBasics() {
+void HSMMParameter::InitBasicsFromCode() {
   hz_ = 10.0;
-  interval_ = 1.0 / hz_;
   res_ = 0.01;
   d_ = 1.0;
   sigma_ = 0.1;
   max_n_ = 5;
   n_state_ = 300;
   n_obs_ = 484;
-  n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);
   alpha_ = 4;
   str_file_distribution_ =
-      "/home/uni/Documents/_research/project/digital_traffic_lights/cpp/"
-      "countdown_timer_traffic_light/src/hsmm/distribution.txt";
+      "/home/uni/Documents/_project/countdown-timer-traffic-light-estimation/"
+      "countdown_timer_estimator/config/distribution.txt";
+
+  interval_ = 1.0 / hz_;
+  n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);
+}
+
+void HSMMParameter::InitBasicsFromProto(const std::string &filepath_proto) {
+  std::cout << "load hsmm parameter from Protobuf..." << std::endl;
+  std::cout << "proto file filepath: " << filepath_proto.c_str() << std::endl;
+
+  HSMMParameterProto proto;
+  GetProtoFromASCIIFile<HSMMParameterProto>(filepath_proto, &proto);
+  hz_ = proto.hz();
+  res_ = proto.res();
+  d_ = proto.d();
+  sigma_ = proto.sigma();
+  max_n_ = proto.max_n();
+  n_state_ = proto.n_state();
+  n_obs_ = proto.n_obs();
+  alpha_ = proto.alpha();
+  str_file_distribution_ = proto.str_file_distribution();
+
+  interval_ = 1.0 / hz_;
+  n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);
 }
 
 void HSMMParameter::GenerateBColor() {

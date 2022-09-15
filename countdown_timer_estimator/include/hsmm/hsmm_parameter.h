@@ -4,7 +4,7 @@
  * @Author: Shuyang ZHANG
  * @Date: 2022-09-14 23:34:45
  * @LastEditors: Shuyang ZHANG
- * @LastEditTime: 2022-09-14 23:38:46
+ * @LastEditTime: 2022-09-15 13:15:03
  * @Description: 
  */
 #pragma once
@@ -17,6 +17,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "proto/hsmm_parameter.pb.h"
+#include "proto/proto_api.h"
 
 namespace cttl {
 namespace hsmm {
@@ -63,6 +66,8 @@ class HSMMParameter {
   Eigen::MatrixXd distributions_;
 
   HSMMParameter();
+  explicit HSMMParameter(const std::string &filepath_proto);
+
   void Display();
   bool IsValid();
 
@@ -72,7 +77,8 @@ class HSMMParameter {
   void GenerateBValue();
   void GenerateAConnections();
   bool LoadDistributions();
-  void InitBasics();
+  void InitBasicsFromCode();
+  void InitBasicsFromProto(const std::string &filepath_proto);
 };
 
 }  // namespace hsmm
