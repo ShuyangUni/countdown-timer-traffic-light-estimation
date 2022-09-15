@@ -16,8 +16,8 @@ model.eval()
 loss_func = torch.nn.CrossEntropyLoss()
 
 ## testing
-folder_testing = "/home/uni/Data/traffic_light/udi_cttl_dataset/5_offset"
-save_folder = "/home/uni/Data/traffic_light/udi_cttl_dataset/classification_results/5_offset"
+folder_testing = "../udi_cttl_dataset/0_offset"
+save_folder = "output"
 
 def split_image(img_path):
     img = cv2.imread(img_path)
@@ -37,6 +37,9 @@ time_start=time.time()
 
 counter = 0
 for subfolder in os.listdir(folder_testing):
+    if subfolder == '.DS_Store':
+        continue
+
     subfolder_path = os.path.join(folder_testing,subfolder)
     file_gt = os.path.join(subfolder_path,"gt.txt")
     file_in = open(file_gt,'r')
