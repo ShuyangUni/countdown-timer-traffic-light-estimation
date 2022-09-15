@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package cttl.hsmm;
+
+message HSMMParameterProto {
+    double hz = 1;
+    double res = 2;
+    double d = 3;
+    double sigma = 4;
+    int32 max_n = 5;
+    int32 n_state = 6;
+    int32 n_obs = 7;
+    double alpha = 8;
+    string str_file_distribution = 9;
+}
