@@ -397,7 +397,7 @@ void HSMMWorker::EvaluateResults(const common::Results &results,
     std::cout << "--------------------------------------------------"
               << std::endl;
     std::cout << "Total number: " << evaluation->n_frames << std::endl;
-    std::cout << "Detection:" << std::endl;
+    std::cout << "Classification:" << std::endl;
     printf("    color: %d/%.3f, value: %d/%.3f, total: %d/%.3f.\n",
            evaluation->obz_n_color_pos, evaluation->obz_r_color_pos,
            evaluation->obz_n_value_pos, evaluation->obz_r_value_pos,
@@ -417,13 +417,13 @@ void HSMMWorker::EvaluateResults(const common::Results &results,
            evaluation->est_n_key_value_pos, evaluation->est_r_key_value_pos,
            evaluation->est_n_key_pos, evaluation->est_r_key_pos);
 
-    std::cout << "Color obzervation number per class:" << std::endl;
+    std::cout << "Color observation number per class:" << std::endl;
     std::cout << evaluation->obz_n_colors.transpose() << std::endl;
-    std::cout << "Confusion matrix color obzervation:" << std::endl;
+    std::cout << "Confusion matrix color observation:" << std::endl;
     std::cout << evaluation->obz_confusion_color << std::endl;
-    std::cout << "Digit obzervation number per class:" << std::endl;
+    std::cout << "Digit observation number per class:" << std::endl;
     std::cout << evaluation->obz_n_digits.transpose() << std::endl;
-    std::cout << "Confusion matrix digit obzervation:" << std::endl;
+    std::cout << "Confusion matrix digit observation:" << std::endl;
     std::cout << evaluation->obz_confusion_digit << std::endl;
     std::cout << "Color estimation number per class:" << std::endl;
     std::cout << evaluation->est_n_colors.transpose() << std::endl;
