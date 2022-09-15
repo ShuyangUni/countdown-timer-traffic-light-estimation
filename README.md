@@ -4,19 +4,20 @@ This paper has been submitted to IEEE Transactions on Intelligent Transportation
 This work aims to estimate the color and digit of traffic lights with countdown timers, using a Variable Transition Hidden Markov Model (VT-HMM) with a dynamic state transtion matrix design.
 
 ## Dataset
-Our toy dataset is in the folder udi_cttl_dataset.
+Our toy dataset is in the folder [udi_cttl_dataset](./udi_cttl_dataset/).
 The image sequences are collected with the help from [Unity-Drive Innovation Technology Co., Ltd.](https://www.unity-drive.com) (UDI).
 Since the scenarios involve customers' information, 
 we cannot provide the raw images for the detection tasks.
 We crop the images according to the detection boxes 
 and use these regions as the inputs for our classifiers.
 
-We collected a toy dataset with $10$ sequences, a total frame of $1702$ image.
+We collected a toy dataset with $10$ sequences, a total frame of $1702$ image. 
 The first $7$ sequences are collected by 
 a Sensing SG2-AR0231C-0202-GMSL-H30S camera, attached to
 our autonomous vehicle platform. 
 The rest $3$ sequences are captured by a smartphone in Shenzhen, China.
 Both devices works at the capture frequency of $10Hz$.
+The dataset only contains the countdown timers with double-digit, which means all the image patches have at most 2 digits, on tens and units places respectively.
 The dataset into two levels according to scenario settings 
 and data collection quality:
 * The normal part includes Sequence $01$, $05$, $06$, $08$, $09$, and $10$. The regions of countdown timers are over $40 \times 40$ pixels, and the digits are clear to be recognized.
@@ -25,7 +26,8 @@ and data collection quality:
 We also simulate the errors of the input bounding boxes. We add random pixel offsets on the detection ground truth, with different magnitudes of 0-pixel, 3-pixel and 5-pixel errors, respectively.
 
 ## State Estimator (C++11)
-This code is in the folder countdown_timer_estimator.
+The state estimator is the core part of this paper. Its input is the color and digit classification sequences from our classifiers. It outputs the optimal estimates of countdown timer traffic light states over time.
+This code is in the folder [countdown_timer_estimator](./countdown_timer_estimator/).
 
 1. Environments
     * The code is tested cross different systems, including 
@@ -161,7 +163,8 @@ This code is in the folder countdown_timer_estimator.
     ```
 
 ## Digit Classifier (Python)
-This code is in the folder digit_classifer.
+The digit classifier is one of the preceding modules of our state estimator. Its input is the detection region of countdown timers, and it output the digit classes on both tens and units places.
+This code is in the folder [digit_classifer](./digit_classifier/).
 
 1. Environments
     * The code is tested cross different systems, including 
