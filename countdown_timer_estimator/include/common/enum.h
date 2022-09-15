@@ -1,11 +1,11 @@
 /*
- * 
- * Copyright (c) [2022] <Shuyang ZHANG>, All Rights Reserved. 
+ *
+ * Copyright (c) [2022] <Shuyang ZHANG>, All Rights Reserved.
  * @Author: Shuyang ZHANG
  * @Date: 2022-09-14 23:34:45
  * @LastEditors: Shuyang ZHANG
  * @LastEditTime: 2022-09-14 23:37:53
- * @Description: 
+ * @Description:
  */
 #pragma once
 

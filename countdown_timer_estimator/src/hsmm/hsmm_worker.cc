@@ -9,7 +9,9 @@
  */
 #include "include/hsmm/hsmm_worker.h"
 
+#ifdef USE_OPENMP
 #include <omp.h>
+#endif
 
 namespace cttl {
 namespace hsmm {
@@ -18,7 +20,9 @@ HSMMWorker::HSMMWorker(const HSMMParameter &param) {
   *param_ = param;
   pair_size_ = param_->n_d_sample_ * param_->n_state_;
 
+#ifdef USE_OPENMP
   omp_set_num_threads(1);
+#endif
 }
 
 bool HSMMWorker::Process(const common::Data &data, const double &drop_ratio,
@@ -153,9 +157,12 @@ void HSMMWorker::CalculateA(const double &t_cur, const double &t_pre,
   double range_min = param_->range_distribution_(0);
   double range_max =
       param_->range_distribution_(param_->range_distribution_.size() - 1);
+
+#ifdef USE_OPENMP
 #pragma omp parallel
   {
 #pragma omp for
+#endif
     for (size_t idx_pair_pre = 0; idx_pair_pre < pair_size_; ++idx_pair_pre) {
       // for each row
       Eigen::VectorXd value = Eigen::VectorXd::Zero(pair_size_);
@@ -197,7 +204,9 @@ void HSMMWorker::CalculateA(const double &t_cur, const double &t_pre,
         }
       }
     }  // end of idx_pair_pre
+#ifdef USE_OPENMP
   }
+#endif
 }
 
 void HSMMWorker::Iteration(const double &t_cur, const double &t_pre,
