@@ -19,6 +19,9 @@ loss_func = torch.nn.CrossEntropyLoss()
 folder_testing = "../udi_cttl_dataset/0_offset"
 save_folder = "output"
 
+if not os.path.exists(save_folder):
+    os.makedirs(save_folder)
+
 def split_image(img_path):
     img = cv2.imread(img_path)
     img_gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
