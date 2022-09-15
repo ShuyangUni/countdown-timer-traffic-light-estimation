@@ -396,7 +396,7 @@ void HSMMWorker::EvaluateResults(const common::Results &results,
   if (bdisplay) {
     std::cout << "--------------------------------------------------"
               << std::endl;
-    std::cout << "Total number: " << evaluation->n_frames << std::endl;
+    std::cout << "Total sequence number: " << evaluation->n_frames << std::endl;
     std::cout << "Classification:" << std::endl;
     printf("    color: %d/%.3f, value: %d/%.3f, total: %d/%.3f.\n",
            evaluation->obz_n_color_pos, evaluation->obz_r_color_pos,
@@ -417,21 +417,21 @@ void HSMMWorker::EvaluateResults(const common::Results &results,
            evaluation->est_n_key_value_pos, evaluation->est_r_key_value_pos,
            evaluation->est_n_key_pos, evaluation->est_r_key_pos);
 
-    std::cout << "Color observation number per class:" << std::endl;
+    std::cout << "Color input counting per class:" << std::endl;
     std::cout << evaluation->obz_n_colors.transpose() << std::endl;
-    std::cout << "Confusion matrix color observation:" << std::endl;
+    std::cout << "Confusion matrix of color input:" << std::endl;
     std::cout << evaluation->obz_confusion_color << std::endl;
-    std::cout << "Digit observation number per class:" << std::endl;
+    std::cout << "Digit input counting per class:" << std::endl;
     std::cout << evaluation->obz_n_digits.transpose() << std::endl;
-    std::cout << "Confusion matrix digit observation:" << std::endl;
+    std::cout << "Confusion matrix of digit input:" << std::endl;
     std::cout << evaluation->obz_confusion_digit << std::endl;
-    std::cout << "Color estimation number per class:" << std::endl;
+    std::cout << "Color output counting per class:" << std::endl;
     std::cout << evaluation->est_n_colors.transpose() << std::endl;
-    std::cout << "Confusion matrix color estimation:" << std::endl;
+    std::cout << "Confusion matrix of color output:" << std::endl;
     std::cout << evaluation->est_confusion_color << std::endl;
-    std::cout << "Digit estimation number per class:" << std::endl;
+    std::cout << "Digit output counting per class:" << std::endl;
     std::cout << evaluation->est_n_digits.transpose() << std::endl;
-    std::cout << "Confusion matrix digit estimation:" << std::endl;
+    std::cout << "Confusion matrix of digit output:" << std::endl;
     std::cout << evaluation->est_confusion_digit << std::endl;
     std::cout << "--------------------------------------------------"
               << std::endl;

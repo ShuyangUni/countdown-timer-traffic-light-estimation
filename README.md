@@ -10,7 +10,7 @@ This work aims to estimate the color and digit of traffic lights with countdown 
 This code is in the folder countdown_timer_estimator.
 
 1. Environments
-    * The code is tested cross different systems, including: 
+    * The code is tested cross different systems, including 
         * Ubuntu 18.04, 64-bit, 16G RAM, Intel Corei5-8600K
         * Ubuntu 20.04, 64-bit, 16G RAM, AMD Ryzen 5 5600X
         * macOS Monterey, 64-bit, 16G RAM, Apple M1 Pro
@@ -76,10 +76,10 @@ This code is in the folder countdown_timer_estimator.
     * When the system is running, the input/output results are given.
     ```
     [Info]: main(): processing...../../udi_cttl_dataset/0_offset/01
-    % seq, timing, ground truth, input from classifiers, estimation output.
+    % sequence, timing, ground truth, input from classifiers, output from estimator.
     % The ground truth/input format: <color, tens place, units place>
     % The output format: <color, tens place, units place>, Duration sampling ID
-    % null detection is marked as [].
+    % null input is marked as [].
     seq:  22391, comsumption:  0.028ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 1
     seq:  22392, comsumption: 51.580ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 2
     seq:  22393, comsumption: 35.075ms, gt: <    red,  2,  1 >, obz: <    red,  2,  1 >, result: <    red,  2,  1 >, 3
@@ -94,22 +94,22 @@ This code is in the folder countdown_timer_estimator.
     ```
     * When finishing a sequence, statistical results are given.
     ```
-        Total number: 412
+    Total sequence number: 412
     Classification:
         color: 412/1.000, value: 394/0.956, total: 394/0.956.
         color: 50/1.000, value: 50/1.000, total: 50/1.000.
     Estimation:
         color: 412/1.000, value: 392/0.951, total: 392/0.951.
         color: 50/1.000, value: 50/1.000, total: 50/1.000.
-    Color observation number per class:
+    Color input counting per class:
     201 211   0
-    Confusion matrix color observation:
+    Confusion matrix of color input:
     201   0   0
     0 211   0
     0   0   0
-    Digit observation number per class:
+    Digit input counting per class:
     165 239 131  39  39  39  47  47  39  39
-    Confusion matrix digit observation:
+    Confusion matrix of digit input:
     164   0   0   0   0   0   1   0   0   0
     0 238   1   0   0   0   0   0   0   0
     0   0 131   0   0   0   0   0   0   0
@@ -120,15 +120,15 @@ This code is in the folder countdown_timer_estimator.
     0   0   0   0   0   0  16  31   0   0
     0   0   0   0   0   0   0   0  39   0
     0   0   0   0   0   0   0   0   0  39
-    Color estimation number per class:
+    Color output counting per class:
     201 211   0
-    Confusion matrix color estimation:
+    Confusion matrix of color output:
     201   0   0
     0 211   0
     0   0   0
-    Digit estimation number per class:
+    Digit output counting per class:
     165 239 131  39  39  39  47  47  39  39
-    Confusion matrix digit estimation:
+    Confusion matrix of digit output:
     165   0   0   0   0   0   0   0   0   0
     0 239   0   0   0   0   0   0   0   0
     0   0 131   0   0   0   0   0   0   0
