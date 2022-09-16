@@ -46,8 +46,17 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
 
 2. Prerequisites
     * Eigen3, for matrix calculation
-    * Protobuf3, for parameter file loading
+        ```
+        sudo apt-get install libeigen3-dev
+        ```
+    * [Protobuf3](https://github.com/protocolbuffers/protobuf), for parameter file loading
+        ```
+        % follow Protobuf official guideline
+        ```
     * OpenMP, for CPU parallel acceleration (optimal)
+        ```
+        sudo apt-get install libomp-dev
+        ```
 
 3. Setup
 * Clone the repository
@@ -187,25 +196,25 @@ and the dataset can be made by [dataset.py](./digit_classifier/dataset.py).
 
 2. Prerequisites
     * numpy
-    ```
-    pip3 install numpy
-    ```
+        ```
+        pip3 install numpy
+        ```
     * torch
-    ```
-    pip3 install torch
-    ```
+        ```
+        pip3 install torch
+        ```
     * pillow
-    ```
-    pip3 install pillow
-    ```
+        ```
+        pip3 install pillow
+        ```
     * torchvision
-    ```
-    pip3 install torchvision
-    ```
+        ```
+        pip3 install torchvision
+        ```
     * opencv
-    ```
-    pip3 install opencv-python
-    ```
+        ```
+        pip3 install opencv-python
+        ```
 3. Run the code
     ```
     cd digit_classifier
