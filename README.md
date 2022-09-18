@@ -71,12 +71,11 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
     ```
 
 * Build the code
+    build without OpenMP
     ```
     cd countdown-timer-traffic-light-estimation/countdown_timer_estimator
     mkdir build
     cd build
-
-    % ignore the error report of protobuf cpp header, at the first time
     cmake ..
     make
     ```
