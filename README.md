@@ -49,10 +49,6 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
         ```
         sudo apt-get install libeigen3-dev
         ```
-    * [Protobuf3](https://github.com/protocolbuffers/protobuf), for parameter file loading
-        ```
-        % follow Protobuf official guideline
-        ```
     * OpenMP, for CPU parallel acceleration (optimal)
         ```
         sudo apt-get install libomp-dev
@@ -61,13 +57,13 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
 3. Setup
 * Clone the repository
     ```
-    git clone https://github.com/ShuyangUni/countdown-timer-traffic-light-estimation.git
+    git clone --recurse-submodules https://github.com/ShuyangUni/countdown-timer-traffic-light-estimation.git
     ```
 
 * Change the offline convolution file path
     ```
-    % line 9, countdown_timer_estimator/config/hsmm_parameter_proto.config
-    str_file_distribution: "${Your Repository Root}/countdown-timer-traffic-light-estimation/countdown_timer_estimator/config/distribution.txt""
+    % line 10, countdown_timer_estimator/config/hsmm_parameter_proto.yaml
+    str_file_distribution: ${Your Repository Root}/countdown-timer-traffic-light-estimation/countdown_timer_estimator/config/distribution.txt
     ```
 
 * Build the code
@@ -88,14 +84,14 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
 * Run the code
     ```
     % ./apps/demo_single_sequence [proto config] [dataset folders]
-    ./apps/demo_single_sequence ../config/hsmm_parameter_proto.config ../../udi_cttl_dataset/0_offset/01
+    ./apps/demo_single_sequence ../config/hsmm_parameter_proto.yaml ../../udi_cttl_dataset/0_offset/01
     ```
 * Running Example
     * The running results are displayed in real time on the terminal.
     * Before runing the sequence, parameter loading information is given.
     ```
-    load hsmm parameter from Protobuf...
-    proto file filepath: ../config/hsmm_parameter_proto.config
+    load hsmm parameter from YAML...
+    YAML file filepath: ../config/hsmm_parameter_proto.yaml
     --------------------------------------------------
     Basic Parameters:
         hz_:10
