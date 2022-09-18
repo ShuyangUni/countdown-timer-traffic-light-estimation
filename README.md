@@ -10,17 +10,17 @@ we cannot provide the raw images for the detection tasks.
 We crop the images according to the detection boxes 
 and use these regions as the inputs for our classifiers.
 
-We collected a toy dataset with $10$ sequences, a total frame of $1702$ image. 
-The first $7$ sequences are collected by 
+We collected a toy dataset with 10 sequences, a total frame of 1702 image. 
+The first 7 sequences are collected by 
 a Sensing SG2-AR0231C-0202-GMSL-H30S camera, attached to
 our autonomous vehicle platform. 
-The rest $3$ sequences are captured by a smartphone in Shenzhen, China.
-Both devices works at the capture frequency of $10Hz$.
+The rest 3 sequences are captured by a smartphone in Shenzhen, China.
+Both devices works at the capture frequency of 10Hz.
 The dataset only contains the countdown timers with double-digit, which means all the image patches have at most 2 digits, on tens and units places respectively.
 The dataset into two levels according to scenario settings 
 and data collection quality:
-* The normal part includes Sequence $01$, $05$, $06$, $08$, $09$, and $10$. The regions of countdown timers are over $40 \times 40$ pixels, and the digits are clear to be recognized.
-* The hard part contains Sequence $02$, $03$, $04$, and $07$, and is challenging for the classification task. The countdown timer regions are small since the ego-vehicle is far from the traffic lights. Some pictures are blurred because of lighting or the ego vehicle's motion.
+* The normal part includes Sequence 01, 05, 06, 08, 09, and 10. The regions of countdown timers are over 40 * 40 pixels, and the digits are clear to be recognized.
+* The hard part contains Sequence 02, 03, 04, and 07, and is challenging for the classification task. The countdown timer regions are small since the ego-vehicle is far from the traffic lights. Some pictures are blurred because of lighting or the ego vehicle's motion.
 
 We also simulate the errors of the input bounding boxes. We add random pixel offsets on the detection ground truth, with different magnitudes of 0-pixel, 3-pixel and 5-pixel errors, respectively.
 
