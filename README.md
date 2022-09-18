@@ -88,7 +88,7 @@ This code is in the folder [countdown_timer_estimator](./countdown_timer_estimat
     ```
 * Running Example
     * The running results are displayed in real time on the terminal.
-    * Before runing the sequence, parameter loading information is given.
+    * Before running the sequence, parameter loading information is given.
     ```
     load hsmm parameter from YAML...
     YAML file filepath: ../config/hsmm_parameter_proto.yaml
