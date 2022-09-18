@@ -1,0 +1,10 @@
+---
+hz: 10.0
+res: 0.01
+d: 1.0
+sigma: 0.1
+max_n: 5
+n_state: 300
+n_obs: 484
+alpha: 4
+str_file_distribution: /home/uni/Documents/_project/countdown-timer-traffic-light-estimation/countdown_timer_estimator/config/distribution.txt

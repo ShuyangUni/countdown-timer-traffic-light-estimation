@@ -4,7 +4,7 @@
  * @Author: Shuyang ZHANG
  * @Date: 2022-09-14 23:34:45
  * @LastEditors: Shuyang ZHANG
- * @LastEditTime: 2022-09-15 13:15:03
+ * @LastEditTime: 2022-09-18 22:25:29
  * @Description: 
  */
 #pragma once
@@ -18,8 +18,10 @@
 #include <string>
 #include <vector>
 
-#include "proto/hsmm_parameter.pb.h"
-#include "proto/proto_api.h"
+// #include "proto/hsmm_parameter.pb.h"
+// #include "proto/proto_api.h"
+
+#include "3rdparty/yaml-cpp/include/yaml-cpp/yaml.h"
 
 namespace cttl {
 namespace hsmm {
@@ -78,7 +80,8 @@ class HSMMParameter {
   void GenerateAConnections();
   bool LoadDistributions();
   void InitBasicsFromCode();
-  void InitBasicsFromProto(const std::string &filepath_proto);
+  // void InitBasicsFromProto(const std::string &filepath_proto);
+  void InitBasicsFromYAML(const std::string &filepath_yaml);
 };
 
 }  // namespace hsmm

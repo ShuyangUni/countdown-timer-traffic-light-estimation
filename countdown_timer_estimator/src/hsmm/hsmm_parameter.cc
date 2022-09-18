@@ -4,7 +4,7 @@
  * @Author: Shuyang ZHANG
  * @Date: 2022-09-14 23:34:45
  * @LastEditors: Shuyang ZHANG
- * @LastEditTime: 2022-09-15 13:41:11
+ * @LastEditTime: 2022-09-18 22:31:57
  * @Description: 
  */
 #include "include/hsmm/hsmm_parameter.h"
@@ -25,8 +25,9 @@ HSMMParameter::HSMMParameter() {}
 //   }
 // }
 
-HSMMParameter::HSMMParameter(const std::string &filepath_proto) {
-  InitBasicsFromProto(filepath_proto);
+HSMMParameter::HSMMParameter(const std::string &filepath_param) {
+  // InitBasicsFromProto(filepath_param);
+  InitBasicsFromYAML(filepath_param);
   GenerateBColor();
   GenerateBValue();
   GenerateAConnections();
@@ -53,21 +54,41 @@ void HSMMParameter::InitBasicsFromCode() {
   n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);
 }
 
-void HSMMParameter::InitBasicsFromProto(const std::string &filepath_proto) {
-  std::cout << "load hsmm parameter from Protobuf..." << std::endl;
-  std::cout << "proto file filepath: " << filepath_proto.c_str() << std::endl;
+// void HSMMParameter::InitBasicsFromProto(const std::string &filepath_proto) {
+//   std::cout << "load hsmm parameter from Protobuf..." << std::endl;
+//   std::cout << "proto file filepath: " << filepath_proto.c_str() <<
+//   std::endl;
 
-  HSMMParameterProto proto;
-  GetProtoFromASCIIFile<HSMMParameterProto>(filepath_proto, &proto);
-  hz_ = proto.hz();
-  res_ = proto.res();
-  d_ = proto.d();
-  sigma_ = proto.sigma();
-  max_n_ = proto.max_n();
-  n_state_ = proto.n_state();
-  n_obs_ = proto.n_obs();
-  alpha_ = proto.alpha();
-  str_file_distribution_ = proto.str_file_distribution();
+//   HSMMParameterProto proto;
+//   GetProtoFromASCIIFile<HSMMParameterProto>(filepath_proto, &proto);
+//   hz_ = proto.hz();
+//   res_ = proto.res();
+//   d_ = proto.d();
+//   sigma_ = proto.sigma();
+//   max_n_ = proto.max_n();
+//   n_state_ = proto.n_state();
+//   n_obs_ = proto.n_obs();
+//   alpha_ = proto.alpha();
+//   str_file_distribution_ = proto.str_file_distribution();
+
+//   interval_ = 1.0 / hz_;
+//   n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);
+// }
+
+void HSMMParameter::InitBasicsFromYAML(const std::string &filepath_yaml) {
+  std::cout << "load hsmm parameter from YAML..." << std::endl;
+  std::cout << "YAML file filepath: " << filepath_yaml.c_str() << std::endl;
+
+  YAML::Node config = YAML::LoadFile(filepath_yaml);
+  hz_ = config["hz"].as<double>();
+  res_ = config["res"].as<double>();
+  d_ = config["d"].as<double>();
+  sigma_ = config["sigma"].as<double>();
+  max_n_ = config["max_n"].as<int>();
+  n_state_ = config["n_state"].as<int>();
+  n_obs_ = config["n_obs"].as<int>();
+  alpha_ = config["alpha"].as<double>();
+  str_file_distribution_ = config["str_file_distribution"].as<std::string>();
 
   interval_ = 1.0 / hz_;
   n_d_sample_ = ceil((d_ + 3 * sigma_) / interval_);

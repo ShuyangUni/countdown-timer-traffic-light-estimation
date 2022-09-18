@@ -30,6 +30,7 @@ include_directories(
     ${EIGEN3_INCLUDE_DIRS}
 )
 
-add_subdirectory(proto)
+add_subdirectory(3rdparty/yaml-cpp)
+# add_subdirectory(proto)
 add_subdirectory(src)
 add_subdirectory(apps)
